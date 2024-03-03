@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  node-express-server:
+    image: node:20.11.0
+    restart: always
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "4002:4002"
+    networks:
+      - db-network
+
+networks:
+  db-network:
+    driver: bridge

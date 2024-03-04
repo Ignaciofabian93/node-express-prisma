@@ -1,5 +1,7 @@
 # Node-Express-Prisma server project template
 
+> Service template with auth added handled with jwt
+
 ## Prisma Settings and Props
 
 ### Install prisma
@@ -41,5 +43,4 @@ npx prisma generate
 @relation  --> assign a relation between models (tables)
 @default   --> assing a default value
 @unique    --> set field value as unique
-@
 ```

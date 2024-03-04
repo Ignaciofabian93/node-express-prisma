@@ -1,6 +1,8 @@
 import express from "express";
+import http from "http";
 import cors from "cors";
 import { corsOptions } from "./config/corsOptions";
+import userRouter from "./routes/users";
 
 const PORT = 4002;
 
@@ -14,6 +16,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Service Ok" });
 });
 
-app.listen(PORT, () => {
+app.use("/api", userRouter);
+
+const server = http.createServer(app);
+
+server.listen(PORT, () => {
   console.log("App running on port: ", PORT);
 });

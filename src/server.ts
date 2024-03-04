@@ -3,8 +3,11 @@ import http from "http";
 import cors from "cors";
 import { corsOptions } from "./config/corsOptions";
 import userRouter from "./routes/users";
+import { config } from "dotenv";
 
-const PORT = 4002;
+config();
+
+const PORT = process.env.PORT;
 
 const app = express();
 

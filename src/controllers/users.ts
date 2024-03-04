@@ -5,6 +5,8 @@ import { sign } from "jsonwebtoken";
 
 const serverError = "Service error";
 
+const secret = process.env.JWT_SECRET as string;
+
 export const loginUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -15,8 +17,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
     const checkPass = await compare(password, user.password);
     if (!checkPass) return res.status(404).json({ error: "Wrong password" });
-
-    const token = sign({ id: user.id }, "secret", {
+    const token = sign({ id: user.id }, secret, {
       expiresIn: "1d",
     });
     return res.status(200).json({ user, token });

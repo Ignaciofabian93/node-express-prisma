@@ -3,12 +3,12 @@ import http from "http";
 import cors from "cors";
 import { corsOptions } from "./config/corsOptions";
 import userRouter from "./routes/users";
+import ollamaRouter from "./routes/ollama";
 import { config } from "dotenv";
 
 config();
 
 const PORT = process.env.PORT;
-
 const app = express();
 
 app.use(cors(corsOptions));
@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", userRouter);
+app.use("/api", ollamaRouter);
 
 const server = http.createServer(app);
 
